@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日はなに聴く？OTSルーレット</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        #roulette {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>今日はなに聴く？OTSルーレット</h1>
+    <div id="roulette">Ep. 0</div>
+    <button onclick="spinRoulette()">Spin the Roulette</button>
+
+    <script>
+        let interval;
+
+        function spinRoulette() {
+            clearInterval(interval); // 前のスピンがあれば停止
+            let roulette = document.getElementById('roulette');
+           
+            // 3秒間ランダムな数字を表示
+            interval = setInterval(function() {
+                let randomNumber = Math.floor(Math.random() * 211);
+                roulette.innerText = 'Ep. ' + randomNumber;
+            }, 100); // 0.1秒ごとに数字を変更
+           
+            // 3秒後に最終的な数字を表示
+            setTimeout(function() {
+                clearInterval(interval);
+                let finalNumber = Math.floor(Math.random() * 211);
+                roulette.innerText = 'Ep. ' + finalNumber;
+            }, 3000); // 3秒後に結果を表示
+        }
+    </script>
+
+</body>
+</html>
